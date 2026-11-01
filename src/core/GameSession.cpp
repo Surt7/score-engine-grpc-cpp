@@ -7,6 +7,8 @@
 void GameSession::init() {
     engine_.add_rule<StartButtonRule>();
     engine_.add_rule<BumperRule>();
+    engine_.add_rule<DrainRule>();
+    engine_.add_rule<LuaRule>("rules.lua");
 }
 
 void GameSession::process_batch(const std::vector<std::string_view> &messages) {

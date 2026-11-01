@@ -4,6 +4,7 @@ project(ScoreEngine)
 find_package(nlohmann_json REQUIRED)
 find_package(protobuf REQUIRED)
 find_package(gRPC REQUIRED)
+find_package(sol2 REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CONFIGURATION_TYPES "Debug" CACHE STRING "" FORCE)
@@ -65,6 +66,7 @@ target_include_directories(ScoreEngine PRIVATE include)
 target_link_libraries(ScoreEngine PRIVATE
         nlohmann_json::nlohmann_json
         score_proto
+        sol2::sol2
 )
 
 add_dependencies(ScoreEngine score_proto)

@@ -51,9 +51,20 @@ EngineResult ScoreEngine::process_event(const Event &event) {
 
 
     if (action == GameAction::GameStart) {
+        state_ = GameState::InGame;
         total_score_.reset();
-    } else {
-        total_score_ += score_delta;
+        current_ball_ = 1;
+    } else if (state_ == GameState::InGame) {
+        if (action == GameAction::BallDrained) {
+            if (current_ball_ < MAX_BALLS) {
+                ++current_ball_;
+            } else {
+                state_ = GameState::GameOver;
+                action = GameAction::GameOver;
+            }
+        } else {
+            total_score_ += score_delta;
+        }
     }
 
     return EngineResult{
@@ -61,7 +72,8 @@ EngineResult ScoreEngine::process_event(const Event &event) {
         .sequence_id = event.sequence_id,
         .score_delta = score_delta,
         .total_score = total_score_,
-        .action = action
+        .action = action,
+        .state = state_
     };
 }
 

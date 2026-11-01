@@ -10,7 +10,7 @@ int main() {
     GameSession session;
     session.init();
 
-    ScoreServiceImpl service(session.engine());
+    ScoreServiceImpl service(session);
 
 
     const std::string server_address = "0.0.0.0:50051";
@@ -29,7 +29,7 @@ int main() {
     std::cin.get();
 
     server->Shutdown();
-    
+
     session.display_summary();
 
     return 0;

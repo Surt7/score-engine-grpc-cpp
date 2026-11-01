@@ -17,3 +17,5 @@ class ScoreEngineConan(ConanFile):
         self.requires("nlohmann_json/3.11.3")
         self.requires("protobuf/6.33.5")
         self.requires("grpc/1.78.1")
+        self.requires("lua/5.4.6")
+        self.requires("sol2/3.3.1")

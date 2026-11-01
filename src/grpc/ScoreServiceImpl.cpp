@@ -2,7 +2,7 @@
 #include "../../include/display/ConsoleDisplay.h"
 #include <iostream>
 
-ScoreServiceImpl::ScoreServiceImpl(ScoreEngine &engine) : engine_(engine) {
+ScoreServiceImpl::ScoreServiceImpl(GameSession &session) : session_(session) {
 }
 
 grpc::Status ScoreServiceImpl::ProcessEvent(
@@ -19,7 +19,7 @@ grpc::Status ScoreServiceImpl::ProcessEvent(
         .signature = request->signature()
     };
 
-    const auto result = engine_.process_event(event);
+    const auto result = session_.process_event(event);
 
     ConsoleDisplay::show_event_result(event.switch_code, result);
     ConsoleDisplay::show_json_result(result);

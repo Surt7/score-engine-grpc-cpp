@@ -14,7 +14,8 @@ var eventsToSend = new[]
     ("BUMPER_1",     2UL),
     ("BUMPER_1",     3UL),
     ("BUMPER_1",     3UL), 
-    ("UNKNOWN_TEST", 4UL)  
+    ("UNKNOWN_TEST", 4UL),
+    ("SUPER_BUMPER", 5UL) 
 };
 
 

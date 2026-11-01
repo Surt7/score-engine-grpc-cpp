@@ -1,11 +1,11 @@
 #pragma once
 #include <score_engine.grpc.pb.h>
 
-#include "core/ScoreEngine.h"
+#include "core/GameSession.h"
 
 class ScoreServiceImpl final : public scoreengine::ScoreService::Service {
 public:
-    explicit ScoreServiceImpl(ScoreEngine &engine);
+    explicit ScoreServiceImpl(GameSession &session);
 
     grpc::Status ProcessEvent(
         grpc::ServerContext *context,
@@ -14,5 +14,5 @@ public:
     ) override;
 
 private :
-    ScoreEngine &engine_;
+    GameSession &session_;
 };
